@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Voting Page</title>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="../css/index.css" />
 </head>
 <body>
@@ -15,6 +15,10 @@
       <h2>Welcome for Voting</h2>
       <p><strong>Voting Dates:</strong> <span id="dates"></span></p>
     </header>
+
+    <div style="text-align: right; margin: 10px 20px;">
+      <button id="logoutBtn" style="padding: 8px 16px;">Logout</button>
+    </div>
 
     <section id="candidate">
       <table class="table text-center">
@@ -41,8 +45,30 @@
     </footer>
   </main>
 
+  <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="../dist/app.bundle.js" type="module"></script>
+
+  <!-- Logout handler -->
+  <script>
+    document.getElementById('logoutBtn')?.addEventListener('click', () => {
+      Swal.fire({
+        title: 'Are you sure you want to logout?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, logout',
+        cancelButtonText: 'Cancel'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Optional: clear session/localStorage here
+          localStorage.clear();
+          sessionStorage.clear();
+          // Redirect to login page
+          window.location.href = '/';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
