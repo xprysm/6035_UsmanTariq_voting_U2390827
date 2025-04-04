@@ -81,7 +81,7 @@ python3 -m venv venv
 source venv/bin/activate
 
 Install Python dependencies:
-pip install fastapi mysql-connector-python pydantic python-dotenv uvicorn[standard] PyJWT
+pip install fastapi mysql-connector-python pydantic python-dotenv 'uvicorn[standard]' PyJWT
 
 Update your .env file in ./Database_API/.env:
 MYSQL_USER="root"
